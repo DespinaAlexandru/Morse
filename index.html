@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morse Trainer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Morse Trainer</h1>
+
+    <section class="card settings">
+      <h2>Settings</h2>
+      <div class="grid">
+        <label>Number of characters
+          <input id="charCount" type="number" min="1" max="2000" value="120" />
+        </label>
+        <label>Speed (WPM)
+          <input id="wpm" type="number" min="5" max="60" value="18" />
+        </label>
+        <label>Frequency (Hz)
+          <input id="frequency" type="number" min="100" max="2000" value="700" />
+        </label>
+        <label>Volume
+          <input id="volume" type="number" min="0" max="1" step="0.05" value="0.5" />
+        </label>
+        <label>Character spacing (dots)
+          <input id="charSpacing" type="number" min="1" max="30" value="15" />
+        </label>
+        <label>Word spacing (dots)
+          <input id="wordSpacing" type="number" min="3" max="40" value="15" />
+        </label>
+        <label>Group size (chars)
+          <input id="groupSize" type="number" min="1" max="12" value="4" />
+        </label>
+      </div>
+
+      <div class="lesson-row">
+        <label>Lesson name
+          <input id="lessonName" type="text" value="De bază" />
+        </label>
+        <label>Custom chars (blank = lesson chars)
+          <input id="customChars" type="text" placeholder="ABCDE" />
+        </label>
+      </div>
+      <p class="using">Using: <strong id="usingChars"></strong></p>
+
+      <label>Pre-start text (played but not shown)
+        <input id="prestartText" type="text" value="VVVV" />
+      </label>
+
+      <div class="toggles">
+        <label><input id="showCurrent" type="checkbox" checked /> Show current character</label>
+        <label><input id="transcriptionMode" type="checkbox" /> Transcription mode</label>
+      </div>
+
+      <div class="actions">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 id="displayTitle">Displayed Text</h2>
+      <div id="displayBox" class="display" aria-live="polite"></div>
+      <div id="scoreBox" class="score hidden"></div>
+      <div id="keyboard" class="keyboard hidden"></div>
+    </section>
+
+    <section class="card">
+      <h2>History (<span id="historyCount">0</span>)</h2>
+      <div id="history"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
