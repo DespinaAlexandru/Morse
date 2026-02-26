@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Morse Trainer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Morse Code Trainer</h1>
+
+    <section class="panel settings">
+      <h2>Settings</h2>
+      <div class="grid">
+        <label>Speed (WPM)
+          <input id="wpm" type="number" min="5" max="60" value="18" />
+        </label>
+
+        <label>Frequency (Hz)
+          <input id="frequency" type="number" min="100" max="2000" value="700" />
+        </label>
+
+        <label>Volume
+          <input id="volume" type="number" step="0.1" min="0" max="1" value="0.5" />
+        </label>
+
+        <label>Character Spacing (dots)
+          <input id="charSpacing" type="number" min="1" max="30" value="15" />
+        </label>
+
+        <label>Word Spacing (dots)
+          <input id="wordSpacing" type="number" min="1" max="30" value="15" />
+        </label>
+
+        <label>Group Size (chars)
+          <input id="groupSize" type="number" min="1" max="8" value="4" />
+        </label>
+
+        <label>Number of Characters
+          <input id="charCount" type="number" min="1" max="1000" value="120" />
+        </label>
+
+        <label>Lesson
+          <select id="lesson">
+            <option value="ARZSJYEQTPIB" selected>De bază</option>
+            <option value="ETANIM">Beginner ETANIM</option>
+            <option value="KMURESD">KMURESD</option>
+            <option value="custom">Custom</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="full">Custom chars (e.g., ABCDE)
+        <input id="customChars" type="text" placeholder="Type characters to train" />
+      </label>
+
+      <p class="using">Using: <strong id="usingChars">ARZSJYEQTPIB</strong></p>
+
+      <label class="full">Pre-start Text (played but not shown)
+        <input id="preStart" type="text" value="VVVV" />
+      </label>
+
+      <div class="toggles">
+        <label><input id="showCurrent" type="checkbox" checked /> Show current character</label>
+        <label><input id="transcriptionMode" type="checkbox" /> Transcription Mode</label>
+      </div>
+
+      <div class="buttons">
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="clearHistoryBtn" class="danger">Clear History</button>
+      </div>
+    </section>
+
+    <section class="panel output">
+      <h2 id="outputTitle">Displayed Text</h2>
+      <div id="currentBox" class="box" aria-live="polite"></div>
+
+      <div id="transcriptionWrap" class="hidden">
+        <textarea id="transcriptionInput" placeholder="Type what you hear..."></textarea>
+        <div id="keyboard" class="keyboard"></div>
+      </div>
+
+      <div id="result" class="result hidden"></div>
+    </section>
+
+    <section class="panel history">
+      <h2 id="historyTitle">History (0)</h2>
+      <div id="historyList"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
